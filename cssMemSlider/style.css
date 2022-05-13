@@ -1,7 +1,10 @@
+body {
+    background-color: black;
+}
 #slider {
     position: relative; 
     text-align: center;
-    margin-top: 40px;
+    padding-top: 2.5rem;
 }
 
 #slider {
@@ -28,42 +31,20 @@ article img {
 }
 
 #desktop:checked ~ #slider {
-    max-width: 960px;
+    max-width:  60rem;
 }
 
-/* #switch1:checked ~ #controls label:nth-child(4),
-#switch2:checked ~ #controls label:nth-child(1),
-#switch3:checked ~ #controls label:nth-child(2),
-#switch4:checked ~ #controls label:nth-child(3) {
-    background: url('./assets/prev.png') no-repeat;
-    float: left;
-    margin: 0 0 0 -84px;
-    display: block;
-    height: 68px;
-    width: 68px;
-}
-#switch1:checked ~ #controls label:nth-child(2), 
-#switch2:checked ~ #controls label:nth-child(3),
-#switch3:checked ~ #controls label:nth-child(4),
-#switch4:checked ~ #controls label:nth-child(1){
-	background: url('./assets/next.png') no-repeat; 
-	float: right;
-	margin: 0 -84px 0 0; 
-	display: block;
-	height: 68px;
-	width: 68px;
-}*/
-
-label, a {
+label {
     cursor: pointer;
     vertical-align: bottom;
 }
+
 .label-item {
-    width: 35px;
-    height: 35px;
+    width: 2.25rem;
+    height: 2.25rem;
     cursor: pointer;
     display: inline-block;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     text-align: center;
     align-items: center;
 }
@@ -88,24 +69,26 @@ label, a {
 #controls {
     margin: -25% 0 0 0;
     width: 100%;
-    height: 50px;
+    height: 3.125rem;
 }
 
 #active label { /* стиль отдельного переключателя*/
-    border-radius: 10px;
+    border-radius: 0.625rem;
     display: inline-block; /*расположение в строку*/
-    width: 15px;
-    height: 15px;
-    background: #bbb;
+    width: 1rem;
+    height: 1rem;
+    background: transparent;
+    border: 0.125rem solid rgb(70, 49, 146);
 }
 #active {/* расположение блока с переключателями*/
     margin: 23% 0 0 ;
     text-align: center;
+    margin-left: 83%;
 }
 
 #active label:hover {/* поведение чекбокса при наведении*/
-    background: #76c8ff;
-    border-color: #777 !important;  /* выполнение в любом случае*/
+    background: #f9fafa;
+    border-color: rgb(70, 49, 146)!important;  /* выполнение в любом случае*/
 }
 
 /* цвет активного лейбла при активации чекбокса */
