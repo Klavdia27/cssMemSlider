@@ -1,0 +1,134 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.main {
+    max-width: 50rem;
+    margin: 3rem;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+.main .slides {
+    height: 100%;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.main .slides > .slide {
+    display: inline-block;
+}
+
+.main .slides .slide > .image {
+    width: 96%;
+}
+
+.main .slides .slide > .slide-description {
+    margin-top: 1rem;
+    white-space: normal;
+    width: 100%;
+}
+
+#slide1, #slide2, #slide3, #slide4 {
+    height: 0;
+}
+
+.btns {
+    position: relative;
+    margin-top: -1.6rem;
+    margin-right: 1.125rem;
+    align-self: flex-end;
+    background-color: black;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.btn-item {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.btn {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 0.175rem solid #380877;
+    background-color: #380877;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.btn-item:hover > .btn {
+    border-color: white;
+    background-color: white;
+}
+
+.btn-item:first-child .btn:first-child {
+    background-color: black;
+}
+
+
+.main > b:target ~ .btns > .btn-item > .btn {
+    background-color: #380877;
+}
+
+#slide1:target ~ .btns > *:nth-child(1) > .btn,
+#slide2:target ~ .btns > *:nth-child(2) > .btn,
+#slide3:target ~ .btns > *:nth-child(3) > .btn,
+#slide4:target ~ .btns > *:nth-child(4) > .btn {
+    background-color: black;
+}
+
+.main > b:target ~ .btns > .btn-item:hover > .btn,
+#slide1:target ~ .btns > *:nth-child(1):hover > .btn,
+#slide2:target ~ .btns > *:nth-child(2):hover > .btn,
+#slide3:target ~ .btns > *:nth-child(3):hover > .btn,
+#slide4:target ~ .btns > *:nth-child(4):hover > .btn {
+    border-color: white;
+    background-color: white;
+}
+
+#slide1:target ~ .slides {
+    transform: translateX(0%);
+}
+
+#slide2:target ~ .slides {
+    transform: translateX(-100%);
+}
+
+#slide3:target ~ .slides {
+    transform: translateX(-200%);
+}
+
+#slide4:target ~ .slides {
+    transform: translateX(-300%);
+}
+
+@media screen and (max-width: 779px) {
+    .main .slides .slide > .slide-description {
+        margin-top: 4rem;
+        max-width: 96%;
+    }
+
+    .btns {
+        align-self: center;
+        margin-top: -5.2rem;
+        padding-bottom: 4rem;
+        background-color: transparent;
+    }
+}
