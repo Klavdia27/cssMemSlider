@@ -1,113 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     background-color: black;
-}
-#slider {
-    position: relative; 
-    text-align: center;
-    padding-top: 2.5rem;
+    color: white;
 }
 
-#slider {
-    margin: 0 auto;
-}
-
-#slides article { 
-    width: 20%;
-    float: left;
-}
-
-#slides .image {
-    width: 500%;
-    line-height: 0;
-}
-
-#overflow {
-    width: 100%;
+.main {
+    max-width: 45rem;
+    margin: 3rem;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    gap: 0.5rem;
     overflow: hidden;
 }
-
-article img {
-    width: 100%;
+.main .slides {
+    height: 100%;
+    white-space: nowrap;
+    transition: 0.2s;
 }
 
-#desktop:checked ~ #slider {
-    max-width:  60rem;
-}
-
-label {
-    cursor: pointer;
-    vertical-align: bottom;
-}
-
-.label-item {
-    width: 2.25rem;
-    height: 2.25rem;
-    cursor: pointer;
+.main .slides > .slide {
     display: inline-block;
-    border-radius: 0.625rem;
-    text-align: center;
-    align-items: center;
 }
 
-.all input {
-    display: none;
-} 
-
-#switch1:checked ~ #slides .image {
-    margin-left: 0; 
-}
-#switch2:checked ~ #slides .image {
-    margin-left: -100%; 
-}
-#switch3:checked ~ #slides .image {
-    margin-left: -200%; 
-}
-#switch4:checked ~ #slides .image {
-    margin-left: -300%; 
-}
-
-#controls {
-    margin: -25% 0 0 0;
+.main .slides .slide > .image {
     width: 100%;
-    height: 3.125rem;
 }
 
-#active label { /* стиль отдельного переключателя*/
-    border-radius: 0.625rem;
-    display: inline-block; /*расположение в строку*/
-    width: 1rem;
+.main .slides .slide > .slide-description {
+    margin-top: 1rem;
+    white-space: normal;
+    width: 100%;
+}
+
+#slide1, #slide2, #slide3, #slide4 {
+    height: 0;
+}
+
+.btns {
+    position: relative;
+    margin-top: -1.6rem;
+    align-self: flex-end;
+    background-color: black;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.btn-item {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.btn {
     height: 1rem;
-    background: transparent;
-    border: 0.125rem solid rgb(70, 49, 146);
-}
-#active {/* расположение блока с переключателями*/
-    margin: 23% 0 0 ;
-    text-align: center;
-    margin-left: 83%;
-}
-
-#active label:hover {/* поведение чекбокса при наведении*/
-    background: #f9fafa;
-    border-color: rgb(70, 49, 146)!important;  /* выполнение в любом случае*/
+    width: 1rem;
+    border-radius: 50%;
+    border: 0.175rem solid #380877;
+    background-color: #380877;
+    transition: 0.4s;
+    cursor: pointer;
 }
 
-/* цвет активного лейбла при активации чекбокса */
-#switch1:checked ~ #active label:nth-child(1),
-#switch2:checked ~ #active label:nth-child(2),
-#switch3:checked ~ #active label:nth-child(3),
-#switch4:checked ~ #active label:nth-child(4) {
-    background: #18a3dd;
-    border-color: #18a3dd !important;
+.btn-item:hover > .btn {
+    border-color: white;
+    background-color: white;
 }
 
-#slides .image { /*анимация пролистывания изображений */
-    transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000)
+.btn-item:first-child .btn:first-child {
+    background-color: black;
 }
 
-#controls label:hover { /* прозрачность стрелок при наведении */
- opacity: 0.6;
+
+.main > b:target ~ .btns > .btn-item > .btn {
+    background-color: #380877;
 }
 
-#controls label { /* прозрачность стрелок при отводе курсора */
-    transition: opacity 0.2s ease-out;
+#slide1:target ~ .btns > *:nth-child(1) > .btn,
+#slide2:target ~ .btns > *:nth-child(2) > .btn,
+#slide3:target ~ .btns > *:nth-child(3) > .btn,
+#slide4:target ~ .btns > *:nth-child(4) > .btn {
+    background-color: black;
+}
+
+.main > b:target ~ .btns > .btn-item:hover > .btn,
+#slide1:target ~ .btns > *:nth-child(1):hover > .btn,
+#slide2:target ~ .btns > *:nth-child(2):hover > .btn,
+#slide3:target ~ .btns > *:nth-child(3):hover > .btn,
+#slide4:target ~ .btns > *:nth-child(4):hover > .btn {
+    border-color: white;
+    background-color: white;
+}
+
+#slide1:target ~ .slides {
+    transform: translateX(0%);
+}
+
+#slide2:target ~ .slides {
+    transform: translateX(-100%);
+}
+
+#slide3:target ~ .slides {
+    transform: translateX(-200%);
+}
+
+#slide4:target ~ .slides {
+    transform: translateX(-300%);
 }
